@@ -47,7 +47,7 @@ class Signup(CreateView):
     # domain = current_site.domain
     # baseurl = f'{self.request.scheme}://{domain}'
     appsettings = AppSettings.load()
-    baseurl = f'http://{appsettings.server_hostname}' if os.environ["django_env"] == 'prod' else 'http://localhost:8000'
+    baseurl = f'http://{appsettings.server_hostname}' if os.environ["DJANGO_ENV"] == 'prod' else 'http://localhost:8000'
     context = {
       'user': user,
       'baseurl': baseurl,
@@ -136,7 +136,7 @@ def subscribe(request):
     plan_id = active_plans[0].id
     current_site = get_current_site(request)
     domain = current_site.domain
-    return_url = f'http://{appsettings.server_hostname}{reverse("main:subscribe")}' if os.environ["django_env"] == 'prod' else 'http://127.0.0.1:8000/subscribe'
+    return_url = f'http://{appsettings.server_hostname}{reverse("main:subscribe")}' if os.environ["DJANGO_ENV"] == 'prod' else 'http://127.0.0.1:8000/subscribe'
     
     try:
       subscription = create_subscription(client, request.user, plan_id, return_url = return_url, cancel_url = return_url)
