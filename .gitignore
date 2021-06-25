@@ -118,3 +118,5 @@ media/
 /static/rest_framework
 /db.sqlite3
 /amazon_scraper/settings/prod.py
+/logs/*
+!/logs/.keep
