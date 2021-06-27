@@ -37,7 +37,7 @@ class RequestCsvForm(forms.ModelForm):
     data = super().clean()
     id_type = data['id_type']
     csv_file = data['csv_file']
-    decoded_file = csv_file.read().decode('utf-8')
+    decoded_file = csv_file.read().decode('utf-8-sig')
     io_string = io.StringIO(decoded_file)
 
     pattern = r'^[A-Z0-9]{10}$' if id_type == 'asin' else r'^[0-9]{13}$' 
