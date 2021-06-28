@@ -102,7 +102,6 @@ ENV/
 
 .DS_Store
 *.sqlite3
-media/
 *.pyc
 *.db
 *.pid
@@ -120,3 +119,5 @@ media/
 /amazon_scraper/settings/prod.py
 /logs/*
 !/logs/.keep
+/media/csv/*
+!/media/csv/.keep
