@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from pathlib import Path
+import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))).parent
@@ -23,7 +24,11 @@ BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))).par
 SECRET_KEY = 'g-d$qa$j(00$81-zz$jr(qelxncamz0+8hy5v(q1rjv6ojb*th'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+ENV = environ.Env(
+  DEBUG=(bool, False)
+)
+environ.Env.read_env(".env")
+DEBUG = ENV("DEBUG")
 
 ALLOWED_HOSTS = ['*']
 AUTH_USER_MODEL = 'main.User'
@@ -80,6 +85,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'amazon_scraper.wsgi.application'
 
+DATABASES = {
+    'default': ENV.db()
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -168,5 +176,13 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR,'media') # 追加
 MEDIA_URL = '/media/' # 追加
 
-
 MAX_ATTEMPTS = 1
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = ENV('DEFAULT_FROM_EMAIL')
+DEFAULT_CHARSET = ENV("DEFAULT_CHARSET")
+EMAIL_HOST = ENV("EMAIL_HOST")
+EMAIL_PORT = ENV("EMAIL_PORT")
+EMAIL_HOST_USER = ENV("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = ENV("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = ENV("EMAIL_USE_TLS")
