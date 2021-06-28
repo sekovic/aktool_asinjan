@@ -116,6 +116,7 @@ class Command(BaseCommand):
     logger.info(f'Started. id = {id}')
     
     requests = ScrapeRequest.objects.filter(status = REQUEST_STATUS_NEW)
+    logger.info("New Requests number : {}".format(len(requests)))
     if id:
       requests = requests.filter(id = id)
     for req in requests:
