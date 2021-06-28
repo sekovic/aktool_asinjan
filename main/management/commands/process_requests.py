@@ -42,6 +42,7 @@ def process_request(req):
   operations = [f.name.replace('do_', '') for f in User._meta.fields if 'do_' in f.name and getattr(req.user, f.name)]
   
   api = get_api(req.user)
+  logger.info("now processing {}".format(req.id))
 
   # if query by jan
   asin_jan_pairs = []
