@@ -178,7 +178,7 @@ MEDIA_URL = '/media/' # 追加
 
 MAX_ATTEMPTS = 1
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = ENV('DEFAULT_FROM_EMAIL')
 DEFAULT_CHARSET = ENV("DEFAULT_CHARSET")
 EMAIL_HOST = ENV("EMAIL_HOST")
