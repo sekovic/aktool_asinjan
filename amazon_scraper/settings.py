@@ -27,7 +27,7 @@ SECRET_KEY = 'g-d$qa$j(00$81-zz$jr(qelxncamz0+8hy5v(q1rjv6ojb*th'
 ENV = environ.Env(
   DEBUG=(bool, False)
 )
-environ.Env.read_env(".env")
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 DEBUG = ENV("DEBUG")
 
 ALLOWED_HOSTS = ['*']
