@@ -58,6 +58,7 @@ class Signup(CreateView):
     try:
       user.email_user(subject, message)
     except Exception as e:
+      print(e)
       messages.error(self.request, 'メール送信に失敗しました。')
     else:
       messages.success(self.request, '仮登録しました。メールを確認し本登録を実施してください。')
