@@ -37,8 +37,8 @@ class AppSettings(SingletonModel):
   default_wait_sec = models.FloatField(default = 1.0)
   quota_wait_sec = models.FloatField(default = 2.0)
   use_paypal = models.BooleanField(default = False)
-  paypal_client_id = models.CharField(max_length = 255, default = 'Adt_Vhio0TLBSK1dsw3iOklDv_u-m87eFmdVqAPZ95O7lelQT8hsJ7zodnV2vo6kghB1HuRpBewqabqL')
-  paypal_client_secret = models.CharField(max_length = 255, default = 'EINVdviKFC5XhnKyuyn6k0nOS1zz_iNxNjqb-Wc_uuR7WxSzZszTNSitz1ScLNNf6sTaXbdu8J-Icod9')
+  paypal_client_id = models.CharField(max_length = 255)
+  paypal_client_secret = models.CharField(max_length = 255)
   server_hostname = models.CharField(max_length=100, default = 'www.asin-jan.com')
 
 class UserManager(BaseUserManager):
